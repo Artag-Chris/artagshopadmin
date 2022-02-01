@@ -1,29 +1,48 @@
 import React from "react";
 import "./topbar.css";
-import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import { NotificationsNone } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 export default function Topbar() {
   return (
-    <div className="topbar">
-      <div className="topbarWrapper">
-        <div className="topLeft">
-          <span className="logo">Artag Admin shop</span>
+    <div className="topbar container-lg  ">
+      <div className="topbarWrapper container d-none d-sm-block d-flex justify-content-around ">
+        <div className="topLeft ">
+          <Link extact to="/" className="logo d-flex ">Bitin</Link>
         </div>
-        <div className="topRight">
-          <div className="topbarIconContainer">
-            <NotificationsNone />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Language />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Settings />
-          </div>
-          <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4aa68f80-158e-4744-95e9-da53a23e1eba/dasli0e-0189993a-d23c-4825-a6fc-aa0403374080.png/v1/fill/w_894,h_894,strp/random_avatar_by_fragtoons_dasli0e-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzRhYTY4ZjgwLTE1OGUtNDc0NC05NWU5LWRhNTNhMjNlMWViYVwvZGFzbGkwZS0wMTg5OTkzYS1kMjNjLTQ4MjUtYTZmYy1hYTA0MDMzNzQwODAucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.rXIypKi4Jrvn0oSV6EXW3-W8SPF6kiyLjrQxH-3Gwjc" alt="" className="topAvatar" />
+        <div className="topRight  container d- ">
+          
+          
         </div>
       </div>
+
+      <nav className="navbar navbar-expand-lg navbar-light bg-light d-block d-sm-none">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">Bitin</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/users" >Gestion Usuarios</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/newUser" >Gestion de Nuevos usuarios</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/products">Gestion de Datos</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/reports">Gestion de Reportes</Link>
+              </li>
+              
+            
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }

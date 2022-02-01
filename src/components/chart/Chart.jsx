@@ -11,7 +11,7 @@ import {
 export default function Chart({ title, data, dataKey, grid }) {
 
   return (
-    <div className="chart">
+    <div className="chart d-none d-sm-block">
       <h3 className="chartTitle">{title}</h3>
       <ResponsiveContainer width="100%" aspect={4 / 1}>
         <LineChart data={data}>

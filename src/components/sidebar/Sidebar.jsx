@@ -2,10 +2,8 @@ import "./sidebar.css";
 import {
   LineStyle,
   Timeline,
-  TrendingUp,
   PermIdentity,
   Storefront,
-  AttachMoney,
   BarChart,
   MailOutline,
   DynamicFeed,
@@ -14,70 +12,69 @@ import {
   Report,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login, logOut } from "../../redux/apiCalls";
+
 
 export default function Sidebar() {
+  const dispatch = useDispatch();
+  const handleClick = (e) => {
+    e.preventDefault();
+    logOut();
+  };
   return (
-    <div className="sidebar">
-      <div className="sidebarWrapper">
+    <div className="sidebar d-none d-sm-block">
+      <div className="sidebarWrapper d-none d-sm-block">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <Link to="/" className="link">
-            <li className="sidebarListItem active">
-              <LineStyle className="sidebarIcon" />
-              Home
-            </li>
+              <li className="sidebarListItem active">
+                <LineStyle className="sidebarIcon" />
+                Home
+              </li>
             </Link>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Sales
-            </li>
-          </ul>
-        </div>
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Quick Menu</h3>
-          <ul className="sidebarList">
             <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
-                Users
+                Gestion de Usuarios
               </li>
             </Link>
             <Link to="/products" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
-                Products
+                Gestion de  Datos
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
-            <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              Reports
-            </li>
+            <Link to="/reports" className="link">
+              <li className="sidebarListItem">
+                <BarChart className="sidebarIcon" />
+                Consulta de Reportes
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Notifications</h3>
+          <h3 className="sidebarTitle">Notificaciones</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <MailOutline className="sidebarIcon" />
-              Mail
-            </li>
-            <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Feedback
-            </li>
-            <li className="sidebarListItem">
-              <ChatBubbleOutline className="sidebarIcon" />
-              Messages
-            </li>
+            <Link to="/mail" className="link">
+              <li className="sidebarListItem">
+                <MailOutline className="sidebarIcon" />
+                Correo
+              </li>
+            </Link>
+            <Link to="/feedback" className="link">
+              <li className="sidebarListItem">
+                <DynamicFeed className="sidebarIcon" />
+                Feedback
+              </li>
+            </Link>
+            <Link to="/chat" className="link">
+              <li className="sidebarListItem">
+                <ChatBubbleOutline className="sidebarIcon" />
+                Mensajes
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -91,13 +88,16 @@ export default function Sidebar() {
               <Timeline className="sidebarIcon" />
               Analytics
             </li>
-            <li className="sidebarListItem">
+            <li className="sidebarListItem" onClick={handleClick}>
               <Report className="sidebarIcon" />
-              Reports
+              <Link to="/login" className="link">
+              Log Out
+              </Link>
             </li>
           </ul>
         </div>
       </div>
+      
     </div>
   );
 }

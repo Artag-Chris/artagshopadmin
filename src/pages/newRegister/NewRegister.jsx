@@ -1,19 +1,13 @@
-import Sidebar from "../../components/sidebar/Sidebar";
-import Topbar from "../../components/topbar/Topbar";
-import "./newUser.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function NewUser() {
-  return (
-    <div>
-      <Topbar />
-      <div className="container">
-
-        <Sidebar />
-        <div className="newUser">
+function NewRegister() {
+  return (<div className='container'>
+      <div className="newUser">
           <h1 className="newUserTitle">Nuevo Usuario</h1>
           <form className="newUserForm">
             <div className="newUserItem">
-              <label>Username</label>
+              <label>Nombre de Usuario</label>
               <input type="text" placeholder="Pepito Perez" />
             </div>
             <div className="newUserItem">
@@ -84,14 +78,17 @@ export default function NewUser() {
                 <label for="male">Plan 1</label>
                 <input type="radio" name="plan" id="id_plan2" value="valor2" />
                 <label for="female">Plan 2</label>
-                <input type="radio" name="plan" id="id_plan3" value="valor3" />
-                <label for="other">Plan 3</label>
+               
               </div>
             </div>
-            <button className="newUserButton">Crear</button>
+            <button className="newUserButton ">
+                <Link to="/">Crear</Link>
+                </button>
           </form>
         </div>
       </div>
-    </div>
-        );
+    
+  );
 }
+
+export default NewRegister;

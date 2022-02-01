@@ -1,43 +1,38 @@
+import { useState } from "react";
 import "./widgetSm.css";
 import { Visibility } from "@material-ui/icons";
-import { useEffect, useState } from "react";
-import { userRequest } from "../../requestMethods";
+import { Link } from "react-router-dom";
+import { userRows } from "../../dummyData";
+
 
 export default function WidgetSm() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const res = await userRequest.get("users");
-        setUsers(res.data);
-      } catch {}
-    };
-    getUsers();
-  }, []);
+  //se debe hacer un map de la dummy data para que se pueda hacer una busqueda dinamica
+  const [data, setData] = useState(userRows);
+ 
   
   return (
     <div className="widgetSm">
-      <span className="widgetSmTitle">New Join Members</span>
+      <span className="widgetSmTitle">Nuevos Miembros</span>
       <ul className="widgetSmList">
-        {users.map((user) => (
-          <li className="widgetSmListItem" key={user._id}>
-            <img
-              src={
-                user.img ||
-                "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"
-              }
-              alt=""
-              className="widgetSmImg"
-            />
-            <div className="widgetSmUser">
-              <span className="widgetSmUsername">{user.username}</span>
-            </div>
-            <button className="widgetSmButton">
-              <Visibility className="widgetSmIcon" />
-              Display
-            </button>
-          </li>
+        {data.map((user,index) => ( 
+
+        <li className="widgetSmListItem" key={index} >
+          <img
+            src={user.avatar}
+            alt=""
+            className="widgetSmImg"
+          />
+          <div className="widgetSmUser">
+            <span className="widgetSmUsername">{user.username} </span>
+            <span className="widgetSmUserTitle">Secretaria</span>
+          </div>
+          <button className="widgetSmButton widgetSmIcon">
+            <Link to={`/user/${user.id}`}>
+            <Visibility className="widgetSmIcon" />
+            Display
+            </Link>
+          </button>
+        </li>
         ))}
       </ul>
     </div>
